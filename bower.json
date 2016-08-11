@@ -1,0 +1,8 @@
+{
+  "name": "crwgregory.github.io",
+  "dependencies" : {
+    "uikit": "master",
+    "particles.js": "master"
+  },
+  "private": true
+}
