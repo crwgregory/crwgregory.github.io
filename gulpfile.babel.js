@@ -15,3 +15,8 @@ gulp.task('lib', function () {
   gulp.src(libraries)
     .pipe(gulp.dest('./static'))
 })
+
+gulp.task('fonts', function () {
+  gulp.src('bower_components/uikit/fonts/*.*')
+    .pipe(gulp.dest('./fonts'))
+})
