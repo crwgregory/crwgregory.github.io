@@ -21,12 +21,6 @@
           </div>
         </div>
       </div>
-      <div id="cube" class="uk-width-1-1"></div>
-      <!--<div class="uk-flex uk-flex-bottom uk-flex-space-around">-->
-        <!--<div class="cr-padding uk-panel uk-text-center">-->
-          <!--<div id="cube"></div>-->
-        <!--</div>-->
-      <!--</div>-->
       <div class="fit uk-flex uk-flex-bottom uk-flex-space-around">
         <div class="cr-padding uk-panel uk-text-center uk-width-1-2">
           <div id="about" class="uk-panel-title">
@@ -61,7 +55,6 @@
       })
       /* eslint-enable */
       this.fitSections()
-      this.drawCube()
     },
     methods: {
       fitSections () {
@@ -79,68 +72,6 @@
           })
           $(children).closest('.fit').css('height', (sectionHeight - usedSpace) + 'px')
         })
-      },
-      drawCube () {
-        /* eslint-disable */
-        var width = 800
-        var height = 500
-        var colorSpeed = .08 / 1000
-        var velocity = [.020, .001]
-        var t0 = Date.now()
-        var projection = d3.geoOrthographic().scale(height / 2 - 120)
-        var svg = d3.select("#cube").append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        var face = svg.selectAll("path")
-            .data(getFaces)
-            .enter().append("path")
-            .each(function(d) {
-              d.polygon = d.map(projection);
-            });
-
-
-        function getFaces() {
-
-          var a = 55;
-          var b = 125;
-
-          return [
-            [[0,  -a], [-a,  0], [0,  a], [a, 0]],
-
-            [[0,  -b], [-b,  0], [0,  b], [b, 0]],
-
-            [[0,  -b], [-b,  0], [-a,  0], [0, -a]],
-
-            [[-b, 0], [0,  b], [0, a], [-a,  0]],
-
-            [[0, b], [b,  0], [a, 0], [0,  a]],
-
-            [[b, 0], [0,  -b], [0, -a], [a,  0]]
-          ];
-        }
-
-        var color = d3.custom_cubehelix()
-            .domain([0, .5, 1])
-            .range([
-              d3.hsl(-100, 0.75, 0.35),
-              d3.hsl(  80, 1.50, 0.80),
-              d3.hsl( 260, 0.75, 0.35)
-            ]);
-
-        d3.timer(function(elapsed) {
-          var time = Date.now() - t0;
-          projection.rotate([time * velocity[0], time * velocity[1]]);
-
-          svg.selectAll('path').style("stroke", function(t) {
-            var x = (elapsed * colorSpeed) % 1;
-            return color(x);
-          });
-
-          face.each(function(d) { d.forEach(function(p, i) { d.polygon[i] = projection(p); }); })
-              .attr("d", function(d) { return "M" + d.polygon.join("L") + "Z"; });
-        });
-        /* eslint-enable */
       }
     }
   }
