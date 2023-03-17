@@ -5650,6 +5650,11 @@ thread-loader@^3.0.0:
     neo-async "^2.6.2"
     schema-utils "^3.0.0"
 
+three@^0.150.1:
+  version "0.150.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.150.1.tgz#870d324a4d2daf1c7d55be97f3f73d83783e28be"
+  integrity sha512-5C1MqKUWaHYo13BX0Q64qcdwImgnnjSOFgBscOzAo8MYCzEtqfQqorEKMcajnA3FHy1yVlIe9AmaMQ0OQracNA==
+
 thunky@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.1.0.tgz#5abaf714a9405db0504732bbccd2cedd9ef9537d"
@@ -5716,6 +5721,11 @@ type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
+
+uikit@^3.16.8:
+  version "3.16.8"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.16.8.tgz#db592c9f712e15a4bc38cc95c0f7dfef43eee7a9"
+  integrity sha512-/MOgbHKbZV8x3XDJgi/8+0s7HWcfhR5AKA7BItuyE/n0R2Etkup2BqAnhWRXUBOzZFay/rHZECnspK4eUguVYQ==
 
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"
