@@ -8,13 +8,13 @@
     <a
       href="https://github.com/crwgregory"
       class="uk-icon-button uk-margin-small-right"
-      uk-icon="github"
+      uk-icon="icon: github; ratio: 1.5"
       target="_blank"
     ></a>
     <a
       href="https://www.linkedin.com/in/crwgregory"
       class="uk-icon-button"
-      uk-icon="linkedin"
+      uk-icon="icon: linkedin; ratio: 1.5"
       target="_blank"
     ></a>
   </div>
@@ -37,5 +37,9 @@ h3 {
 ul {
   list-style-type: none;
   padding: 0;
+}
+.uk-icon-button {
+  width: 50px;
+  height: 50px;
 }
 </style>

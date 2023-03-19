@@ -34,14 +34,17 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
 html {
   height: 100%;
 }
+
 path {
   fill: transparent;
   stroke: #000;
   stroke-width: 2px;
 }
+
 /* #app {
   margin: 0 25px
 } */
@@ -49,16 +52,21 @@ path {
   border-bottom: black 1px solid;
   height: 7vh;
 }
+
 .section {
   height: 100vh;
 }
+
 .fit {
   padding-bottom: 10px;
 }
+
 .cr-padding {
   padding: 20px;
 }
+
 .uk-icon svg path {
-  stroke-width: 0.9; /* Adjust this value according to your preference */
+  stroke-width: 0.9;
+  stroke: grey;
 }
 </style>
