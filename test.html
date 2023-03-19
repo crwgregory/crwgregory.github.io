@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    // Set up the scene, camera, and renderer
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 10;
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('container').appendChild(renderer.domElement);
+
+// Create a stick figure
+function createStickFigure() {
+  const material = new THREE.LineBasicMaterial({ color: 0x000000 });
+
+  const figure = new THREE.Object3D();
+
+  const line = (start, end) => {
+    const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
+    return new THREE.Line(geometry, material);
+  };
+
+  // Head
+  const headRadius = 0.5;
+  const head = new THREE.Mesh(new THREE.SphereGeometry(headRadius, 16, 16), material);
+  head.position.y = 2.5;
+  figure.add(head);
+
+  // Body
+  figure.add(line(new THREE.Vector3(0, 2, 0), new THREE.Vector3(0, 0, 0)));
+
+  // Arms
+  figure.add(line(new THREE.Vector3(0, 2, 0), new THREE.Vector3(-1, 1, 0)));
+  figure.add(line(new THREE.Vector3(0, 2, 0), new THREE.Vector3(1, 1, 0)));
+
+  // Legs
+  figure.add(line(new THREE.Vector3(0, 0, 0), new THREE.Vector3(-1, -1, 0)));
+  figure.add(line(new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, -1, 0)));
+
+  return figure;
+}
+
+// Create the walking stick figure
+const stickFigure = createStickFigure();
+scene.add(stickFigure);
+
+// Animation variables
+let moveDirection = 1;
+let time = 0;
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Move the stick figure
+  stickFigure.position.x += 0.01 * moveDirection;
+
+  // Change direction when the stick figure reaches the screen edges
+  if (stickFigure.position.x > 7 || stickFigure.position.x < -7) {
+    moveDirection *= -1;
+  }
+
+  // Create a walking animation by rotating the legs
+  time += 0.1;
+  const legAngle = 0.5 * Math.sin(time);
+  stickFigure.children[4].rotation.z = legAngle;
+  stickFigure.children[5].rotation.z = -legAngle;
+
+  renderer.render(scene, camera);
+}
+
+// Start the animation loop
+animate();
+
+  </script>
+</body>
+</html>
